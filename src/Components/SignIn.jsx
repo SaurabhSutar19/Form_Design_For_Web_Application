@@ -59,7 +59,7 @@ const SignIn = () => {
       setMessage("Login Succesful!");
       setTimeout(() => {
         navigate("/profile");
-      }, 2000); 
+      }, 1000); 
      
     } 
      
@@ -68,15 +68,15 @@ const SignIn = () => {
       errors.email = "Please enter your email.";
     } else if (!regex.test(values.email)) {
       errors.email = "This is a not valid format ";
-    }else if(userMail === formValues.email){
-      errors.email = "Please enter the correct email."
+    }else if(userMail !== formValues.email){
+      errors.email = "entered email is does not match."
     }
 
     if (values.password.length < 4) {
       errors.password =
         "Password must be minimum 4 characters include one UPPERCASE, lowercase, number and special character: @$! % * ? & ";
     }else if(userPass !== formValues.password){
-      errors.password = "Please enter the correct password. ";
+      errors.password = "entered password is does not match.";
     }
 
 
@@ -171,9 +171,11 @@ const SignIn = () => {
                   Sign In
                 </button>
               </div>
-              <div>
+             <div>
+             <div>
               {message && <p className="text-center mt-2 text-green-600 text-lg">{message}</p>}
               </div>
+             </div>
             </form>
           </div>
         </div>
