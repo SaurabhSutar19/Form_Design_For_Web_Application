@@ -10,6 +10,7 @@ const VerifyOTP = () => {
   const [otp, setOtp] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [message,setMessage] = useState("")
 
   // Handle OTP input change
   const handleChangeOtp = (newOtp) => {
@@ -38,8 +39,11 @@ const VerifyOTP = () => {
   // If the form is submitted and OTP is correct, navigate to login page
   useEffect(() => {
     if (isSubmit) {
-      alert("OTP verified!");
-      navigate("/sign_in");
+      setMessage("OTP verified!");
+      setTimeout(()=>{
+        navigate("/sign_in");
+      },2000)
+    
     }
   }, [isSubmit, navigate]);
 
@@ -109,6 +113,9 @@ const VerifyOTP = () => {
                 Resend
               </button>
             </div>
+            <div>
+              {message && <p className="text-center mt-2 text-green-600 text-lg">{message}</p>}
+              </div>
           </form>
         </div>
       </div>
