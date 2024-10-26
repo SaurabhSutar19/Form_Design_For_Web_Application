@@ -12,6 +12,7 @@ const SignIn = () => {
   const [formValues, setFormValues] = useState(initialvalues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+ 
 
   const [passVisible, setPassVisible] = useState(false);
 
@@ -27,22 +28,8 @@ const SignIn = () => {
       e.preventDefault();
       e.persist();
       setFormErrors(valideate(formValues));
+      setIsSubmit(true)
 
-      const userMail = JSON.parse(localStorage.getItem("email"));
-      const userPass = JSON.parse(localStorage.getItem("password"));
-      console.log("from loacal", userMail, userPass);
-      console.log(
-        "formValues",
-        formValues,
-        formValues.email,
-        formValues.password
-      );
-      if (userMail === formValues.email && userPass === formValues.password) {
-        setMessage("Login Succesful!");
-        navigate("/profile");
-      } else {
-        setMessage("Invalid email or password.");
-      }
     } catch (error) {
       throw error;
     }
@@ -51,24 +38,48 @@ const SignIn = () => {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
     }
-  }, [formErrors]);
+  }, [formErrors,isSubmit]);
 
   const valideate = (values) => {
     const errors = {};
 
-    const regex =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    const userMail = JSON.parse(localStorage.getItem("email"));
+    const userPass = JSON.parse(localStorage.getItem("password"));
+    console.log("from loacal", userMail, userPass);
+    console.log(
+      "formValues",
+      formValues,
+      formValues.email,
+      formValues.password
+    );
+
+    if (userMail === formValues.email && userPass === formValues.password) {
+      setMessage("Login Succesful!");
+      setTimeout(() => {
+        navigate("/profile");
+      }, 2000); 
+     
+    } 
+     
 
     if (!values.email) {
-      errors.email = "Please Enter Your email";
+      errors.email = "Please enter your email.";
     } else if (!regex.test(values.email)) {
       errors.email = "This is a not valid format ";
+    }else if(userMail === formValues.email){
+      errors.email = "Please enter the correct email."
     }
 
     if (values.password.length < 4) {
       errors.password =
         "Password must be minimum 4 characters include one UPPERCASE, lowercase, number and special character: @$! % * ? & ";
+    }else if(userPass !== formValues.password){
+      errors.password = "Please enter the correct password. ";
     }
+
+
 
     return errors;
   };
@@ -96,7 +107,7 @@ const SignIn = () => {
               Sign In
             </h1>
             <form
-              action="#"
+              
               onSubmit={handleSubmit}
               className=" flex flex-col space-y-4 w-full font-bold "
             >
@@ -106,7 +117,7 @@ const SignIn = () => {
                   type="text"
                   name="email"
                   value={formValues.email}
-                  placeholder="Enter Your Email Address..!"
+                  placeholder="enter your email address..!"
                   onChange={handleChange}
                   className=" px-4 py-2 text-md  outline-none border-2 border-gray-300 rounded-md hover:border-gray-600 duration-200 peer focus:border-indigo-600  bg-inherit w-full"
                 />
@@ -120,7 +131,7 @@ const SignIn = () => {
                     type={passVisible ? "text" : "password"}
                     name="password"
                     value={formValues.password}
-                    placeholder="Enter Your Password..!"
+                    placeholder="enter your password..!"
                     onChange={handleChange}
                     className="mt-2 px-4 py-2 text-md  outline-none border-2 border-gray-300 rounded-md hover:border-gray-600 duration-200 peer focus:border-indigo-600  bg-inherit w-full"
                   />
@@ -133,7 +144,6 @@ const SignIn = () => {
                   </span>
                 </label>
                 <p className="text-red-900 text-sm">{formErrors.password}</p>
-                {message && <p>{message}</p>}
               </div>
 
               <div className="flex justify-between">
@@ -161,8 +171,10 @@ const SignIn = () => {
                   Sign In
                 </button>
               </div>
+              <div>
+              {message && <p className="text-center mt-2 text-green-600 text-lg">{message}</p>}
+              </div>
             </form>
-           
           </div>
         </div>
       </div>
