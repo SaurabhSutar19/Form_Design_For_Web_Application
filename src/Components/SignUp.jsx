@@ -226,7 +226,8 @@ const SignUp = () => {
               {/* Sign-up button */}
               <button
                 type="submit"
-                className="w-full text-center bg-gradient-to-r from-indigo-600 to-purple-500 hover:scale-[1.05] ease-in-out transition-all px-4 py-3 rounded-md tracking-wide font-bold hover:shadow-lg hover:shadow-black text-white"
+                className="inline-block  self-end bg-gradient-to-tr from-violet-700 to-pink-700 text-white text-sm uppercase  font-bold px-6 py-2 tracking-wide rounded-lg cursor-pointer 
+              active:scale-[.98] avtive:duration-75 hover:scale-[1.05] ease-in-out transition-all  "
               >
                 Sign Up
               </button>
