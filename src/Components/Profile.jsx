@@ -114,7 +114,7 @@ const validate = (values) => {
              
             </div>
             <div >
-              <img className="object-cover object-center rounded   hover:shadow-md   active:scale-[.98] avtive:duration-75 hover:scale-[1.05] ease-in-out transition-all mt-14 " src={profile} alt="sign_in_img" />
+              <img className="object-cover object-center rounded   hover:shadow-md  h-96 w-96  active:scale-[.98] avtive:duration-75 hover:scale-[1.05] ease-in-out transition-all mt-14 " src={profile} alt="sign_in_img" />
             </div>
         
            
