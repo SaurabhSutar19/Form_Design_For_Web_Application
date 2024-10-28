@@ -76,14 +76,14 @@ const VerifyOTP = () => {
 
         {/* OTP input and buttons */}
         <div className="space-y-3 flex flex-col bg-white h-fit border-4 border-white rounded-xl shadow-lg p-8 text-teal-600 md:w-84 lg:w-96">
-          <h1 className="text-center text-black font-semibold">
-            {" "}
-            <h1 className="text-2xl text-red-950  ">OTP</h1>
-            {JSON.parse(localStorage.getItem("otp"))}
-          </h1>
+    
           <h1 className="text-4xl font-bold mt-1 text-center text-gradient-to-tr from-violet-700 to-pink-700">
             Enter OTP
           </h1>
+          <h1 className="text-center text-gradient-to-tr from-violet-700 text-lg font-bold tracking-wide">
+            {JSON.parse(localStorage.getItem("otp"))}
+          </h1>
+
           <form className="flex flex-col space-y-4 w-full font-bold">
             <div className="space-y-2 mt-2">
               <OtpInput length={6} onChangeOtp={handleChangeOtp} />
