@@ -91,7 +91,7 @@ const SignIn = () => {
           <div className="hidden md:flex flex-col space-y-4 ">
             <div className="">
               <h1 className="font-bold text-3xl tracking-wide">Sign In</h1>
-              <p></p>
+              
             </div>
             <div>
               <img
@@ -171,11 +171,6 @@ const SignIn = () => {
                   Sign In
                 </button>
               </div>
-             <div>
-             <div>
-              {message && <p className="text-center mt-2 text-green-600 text-lg">{message}</p>}
-              </div>
-             </div>
             </form>
           </div>
         </div>
