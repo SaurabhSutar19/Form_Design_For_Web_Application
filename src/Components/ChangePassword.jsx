@@ -105,7 +105,7 @@ const ChangePassword = () => {
             <h1 className="text-4xl text-gradient-to-tr from-violet-700 to-pink-700 tracking-wide font-bold mb-5 text-center">
               Change Password
             </h1>
-            <form action="#" onSubmit={handleSubmit} className="flex flex-col space-y-2 w-full font-bold">
+            <form action="#" onSubmit={handleSubmit} className="flex flex-col space-y-2 w-full ">
               {/* Current Password */}
               <div className="space-y-2 mt-4">
                 <label htmlFor="" className="relative font-bold">
@@ -114,13 +114,13 @@ const ChangePassword = () => {
                     type={currPassVisible ? "text" : "password"}
                     name="currentpass"
                     value={formValues.currentpass}
-                    placeholder="Enter Your Previous Password..!"
+                    placeholder="Enter the previous password..!"
                     onChange={handleChange}
                     className="px-4 py-2 mt-2 text-md outline-none border-2 border-gray-300 rounded-md hover:border-gray-600 duration-200 peer focus:border-indigo-600 bg-inherit w-full"
                   />
                   <span
                     onClick={() => setCurrPassVisible(!currPassVisible)}
-                    className="absolute right-0 mt-4 px-1 text-md uppercase tracking-wide peer-focus:text-indigo-600 duration-200 peer-focus:text-sm cursor-pointer mr-2"
+                    className="absolute right-0 mt-6 px-1 text-md uppercase tracking-wide peer-focus:text-indigo-600 duration-200 peer-focus:text-sm cursor-pointer mr-2"
                   >
                     {currPassVisible ? <FaEye /> : <FaEyeSlash />}
                   </span>
@@ -136,13 +136,13 @@ const ChangePassword = () => {
                     type={passVisible ? "text" : "password"}
                     name="password"
                     value={formValues.password}
-                    placeholder="Enter Your New Password..!"
+                    placeholder="Enter the new password..!"
                     onChange={handleChange}
                     className="px-4 py-2 mt-2 text-md outline-none border-2 border-gray-300 rounded-md hover:border-gray-600 duration-200 peer focus:border-indigo-600 bg-inherit w-full"
                   />
                   <span
                     onClick={() => setPassVisible(!passVisible)}
-                    className="absolute right-0 mt-4 px-1 text-md uppercase tracking-wide peer-focus:text-indigo-600 duration-200 peer-focus:text-sm cursor-pointer mr-2"
+                    className="absolute right-0 mt-6 px-1 text-md uppercase tracking-wide peer-focus:text-indigo-600 duration-200 peer-focus:text-sm cursor-pointer mr-2"
                   >
                     {passVisible ? <FaEye /> : <FaEyeSlash />}
                   </span>
@@ -159,13 +159,13 @@ const ChangePassword = () => {
                     type={confPassVisible ? "text" : "password"}
                     name="confpassword"
                     value={formValues.confpassword}
-                    placeholder="Enter Your Confirm Password..!"
+                    placeholder="Enter your confirm password..!"
                     onChange={handleChange}
                     className="px-4 py-2 mt-2 text-md outline-none border-2 border-gray-300 rounded-md hover:border-gray-600 duration-200 peer focus:border-indigo-600 bg-inherit w-full"
                   />
                   <span
                     onClick={() => setConfPassVisible(!confPassVisible)}
-                    className="absolute right-0 mt-4 px-1 text-md uppercase tracking-wide peer-focus:text-indigo-600 duration-200 peer-focus:text-sm cursor-pointer mr-2"
+                    className="absolute right-0 mt-6 px-1 text-md uppercase tracking-wide peer-focus:text-indigo-600 duration-200 peer-focus:text-sm cursor-pointer mr-2"
                   >
                     {confPassVisible ? <FaEye /> : <FaEyeSlash />}
                   </span>
