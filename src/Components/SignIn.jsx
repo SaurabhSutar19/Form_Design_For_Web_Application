@@ -12,7 +12,6 @@ const SignIn = () => {
   const [formValues, setFormValues] = useState(initialvalues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
- 
 
   const [passVisible, setPassVisible] = useState(false);
 
@@ -28,8 +27,7 @@ const SignIn = () => {
       e.preventDefault();
       e.persist();
       setFormErrors(valideate(formValues));
-      setIsSubmit(true)
-
+      setIsSubmit(true);
     } catch (error) {
       throw error;
     }
@@ -38,7 +36,7 @@ const SignIn = () => {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
     }
-  }, [formErrors,isSubmit]);
+  }, [formErrors, isSubmit]);
 
   const valideate = (values) => {
     const errors = {};
@@ -59,27 +57,23 @@ const SignIn = () => {
       setMessage("Login Succesful!");
       setTimeout(() => {
         navigate("/profile");
-      }, 1000); 
-     
-    } 
-     
+      }, 1000);
+    }
 
     if (!values.email) {
       errors.email = "Please enter your email.";
     } else if (!regex.test(values.email)) {
       errors.email = "This is a not valid format ";
-    }else if(userMail !== formValues.email){
-      errors.email = "entered email is does not match."
+    } else if (userMail !== formValues.email) {
+      errors.email = "entered email is does not match.";
     }
 
     if (values.password.length < 4) {
       errors.password =
         "Password must be minimum 4 characters include one UPPERCASE, lowercase, number and special character: @$! % * ? & ";
-    }else if(userPass !== formValues.password){
+    } else if (userPass !== formValues.password) {
       errors.password = "entered password is does not match.";
     }
-
-
 
     return errors;
   };
@@ -91,7 +85,6 @@ const SignIn = () => {
           <div className="hidden md:flex flex-col space-y-4 ">
             <div className="">
               <h1 className="font-bold text-3xl tracking-wide">Sign In</h1>
-              
             </div>
             <div>
               <img
@@ -107,7 +100,6 @@ const SignIn = () => {
               Sign In
             </h1>
             <form
-              
               onSubmit={handleSubmit}
               className=" flex flex-col space-y-4 w-full font-bold "
             >

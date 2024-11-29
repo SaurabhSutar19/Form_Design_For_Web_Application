@@ -14,6 +14,7 @@ const VerifyOTP = () => {
 
   // Handle OTP input change
   const handleChangeOtp = (newOtp) => {
+    console.log(newOtp);
     setOtp(newOtp);
   };
 
@@ -29,9 +30,7 @@ const VerifyOTP = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validateOtp(otp)); // Validate OTP
-
-    console.log("local", JSON.parse(localStorage.getItem("otp")), typeof otp);
-    if (Number(otp) === JSON.parse(localStorage.getItem("otp"))) {
+    if (Number(otp) === Number(JSON.parse(localStorage.getItem("otp")))) {
       setIsSubmit(true); // Set submit flag if OTP is correct
     }
   };
@@ -50,12 +49,13 @@ const VerifyOTP = () => {
   // OTP validation function
   const validateOtp = (value) => {
     const errors = {};
-    const storedOtp = localStorage.getItem("otp"); // Get OTP from localStorage
+    const storedOtp = JSON.parse(localStorage.getItem("otp")); // Get OTP from localStorage
+    console.log("value",value,"stored",storedOtp)
     const regex = /^\d+$/; // Regex for digits only
 
     if (!regex.test(value)) {
       errors.otp = "Please enter a valid OTP.";
-    } else if (value !== storedOtp) {
+    } else if (Number(value) !== Number(storedOtp)) {
       errors.otp = "OTP does not match.";
     }
     return errors;
